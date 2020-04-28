@@ -84,7 +84,7 @@ The EC2 instance AMI we will use for this example is a Debian 10 Buster AMI in a
 
 7.	*Choose* **Review and Launch** and *select* **Launch**
 
-###Install and compile FreeSWITCH
+### Install and compile FreeSWITCH
 We will install and compile FreeSWITCH on the EC2 instance to handle the inbound calls to join a meeting and transferring to the Amazon Chime SDK meeting.
 1. Follow the Easy Way instructions to install and compile FreeSWITCH and dependencies for the Debian 10 Buster operating system. Instructions can be found on the [FreeSWITCH.org website](https://freeswitch.org/confluence/display/FREESWITCH/Debian+10+Buster). Before the compile step to enter command `./configure`, make the following changes to the `modules.conf` file under `/usr/src/freeswitch`:
 -	Uncomment lines for `applications/mod_curl` and `Languages/mod_v8`
@@ -111,7 +111,7 @@ Take note of the FreeSWITCH configuration locations:
       soundsdir:       /usr/local/FreeSWITCH/sounds
 ------------------------------------------------------------------------------
 
-###Configure FreeSWITCH to connect to Amazon Chime Voice Connector 
+### Configure FreeSWITCH to connect to Amazon Chime Voice Connector 
 The following steps will be used to set up TLS to the outbound voice connector created earlier and edit FreeSWITCH configuration files for integration with the voice connectors. 
 
 
@@ -194,7 +194,7 @@ The `gentls_cert` utility is located in the **/usr/src/FreeSWITCH/scripts** dire
 </include>
 ```
 
-###Configure FreeSWITCH with an IVR application that plays a menu and connects the caller to the Amazon Chime SDK meeting
+### Configure FreeSWITCH with an IVR application that plays a menu and connects the caller to the Amazon Chime SDK meeting
 1.	Create a new xml file named **chime.xml** to be used for the dialplan in the **/usr/local/FreeSWITCH/conf/dialplan/public** directory. Contents of the file is as follows. Use your voice connector id in the application bridge section. The +17035550122 phone number is a static number that is used for the [Amazon Chime Voice Connector and Amazon Chime SDK integration](https://docs.aws.amazon.com/chime/latest/dg/mtgs-sdk-cvc.html)
 
 ```
@@ -211,7 +211,7 @@ The `gentls_cert` utility is located in the **/usr/src/FreeSWITCH/scripts** dire
 ```
 2.	Add script to play a menu for PSTN callers to join the meeting. Copy the [JoinMeeting script with audio files](https://code.amazon.com/packages/PSTNIntegrationWithChimeSDKMeetings/trees/mainline) from this repository. Add the **JoinMeeting.js** file to the **/usr/local/FreeSWITCH/scripts** directory and the **please_enter_id.wav** and the **now_join.wav** files to the **/usr/local/FreeSWITCH/sounds** directory
 
-###Join your Chime SDK meeting from a PSTN phone
+### Join your Chime SDK meeting from a PSTN phone
 1.	Start a Chime SDK meeting with an 8 digit numeric meeting ID (e.g. 12345678). You can modify the **JoinMeeting.js** file to change your meeting ID format if you have different meeting ID criteria.
 2.	Call in to the phone number you assigned to your Amazon Chime Voice Connector and when prompted, enter your meeting ID (12345678)
 3.	Your call should now be connected as a participant in the Chime SDK meeting.  The following is an example screenshot. 
@@ -220,10 +220,10 @@ The `gentls_cert` utility is located in the **/usr/src/FreeSWITCH/scripts** dire
 4.	You can optionally [enable streaming](https://docs.aws.amazon.com/chime/latest/ag/start-kinesis-vc.html) on your outbound voice connector to capture the audio from your meeting for storage or analytics in AWS.  Once enabled, your audio is streamed to an Amazon Kinesis Video Stream where you can use other AWS services such as [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Amazon Comprehend](https://aws.amazon.com/comprehend/) in real-time or on stored audio.
 
 
-##Cleaning up
+## Cleaning up
 To avoid incurring future charges, delete the EC2 instance and Voice Connector. Optionally, you can also remove your Amazon Chime SDK serverless application if you created one for this demo.
 
-##Conclusion
+## Conclusion
 In this solution you saw how to add the ability for PSTN callers to participate in your Chime SDK meetings. You also built an open source PBX/softswitch in AWS and learned about how to claim a public phone number in Amazon Chime Voice Connector. For more information on Amazon Chime Voice Connector streaming and transcription, visit this [sample project for Amazon Chime Voice Connector streaming on Github](https://github.com/aws-samples/amazon-chime-voiceconnector-transcription).  To learn more about Amazon Chime SDK please see this [Getting Started with Chime SDK blog post](https://blogposttbd).
 
 
