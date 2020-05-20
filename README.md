@@ -1,6 +1,6 @@
 # PSTN Integration with Amazon Chime SDK Meetings
 
-Getting started with PSTN Caller integration with Amazon Chime SDK meetings using Amazon Chime Voice Connector and FreeSWITCH.
+Example solution for configuring PSTN Caller integration with Amazon Chime SDK meetings using Amazon Chime Voice Connector and FreeSWITCH.
 
 ## On this Page
 - [Project Overview](#project-overview)
