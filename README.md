@@ -46,11 +46,12 @@ Before getting started, make sure that you have the following in place:
 
 To build this solution, you must use Amazon EC2 and Amazon Chime Voice Connector to connect to the Amazon Chime SDK meeting application. Download all files from this repository's resources folder to configure the IVR application in FreeSWITCH. Below are the high-level steps.  Note, if you choose to use a paid AMI that has FreeSWITCH preinstalled, you can skip step 3:
 
-1.	Create two Amazon Chime Voice Connectors for inbound and outbound calling 
-2.	Create an Amazon EC2 instance for the FreeSWITCH server. 
-3.	Install and compile FreeSWITCH 
-4.	Configure FreeSWITCH to connect to Amazon Chime Voice Connector 
-5.	Configure FreeSWITCH with an IVR application that plays a menu and connects the caller to the Amazon Chime SDK meeting
+1.	[Create two Amazon Chime Voice Connectors for inbound and outbound calling](#Create-2-voice-connectors-for-inbound-and-outbound-calling)
+2.	[Create an Amazon EC2 instance for the FreeSWITCH server](#Create-an-Amazon-EC2-instance-for-the-FreeSWITCH-server)
+3.	[Install and compile FreeSWITCH](#Install-and-compile-FreeSWITCH) 
+4.	[Configure FreeSWITCH to connect to Amazon Chime Voice Connector](#Configure-FreeSWITCH-to-connect-to-Amazon-Chime-Voice-Connector) 
+5.	[Configure FreeSWITCH with an IVR application that plays a menu and connects the caller to the Amazon Chime SDK meeting](#Configure-FreeSWITCH-with-an-IVR-application-that-plays-a-menu-and-connects-the-caller-to-the-Amazon-Chime-SDK-meeting)
+6. [Join your Amazon Chime SDK meeting from a PSTN phone](#Join-your-Amazon-Chime-SDK-meeting-from-a-PSTN-phone)
 
 
 
