@@ -13,10 +13,10 @@ Example solution for configuring PSTN Caller integration with Amazon Chime SDK m
 
 
 ## Project Overview
-The purpose of this project is to provide an example Interactive Voice Response (IVR) application and steps to allow PSTN callers to participate in Amazon Chime SDK meetings.  This solution uses Amazon Chime Voice Connector and an open source softswitch called [FreeSWITCH](https://freeswitch.com/) to provide a phone menu for dial-in callers to an Amazon Chime SDK meeting.
+The purpose of this project is to provide an example Interactive Voice Response (IVR) application and steps to allow PSTN callers to participate in Amazon Chime SDK meetings.  This solution uses Amazon Chime Voice Connector and an open source softswitch called [FreeSWITCH](https://freeswitch.com/). A phone menu is configured for dial-in callers to enter an Amazon Chime SDK meeting.
 
 ## Architecture Overview
-The following diagram outlines the solution flow beginning with an Amazon Chime SDK meeting being started. A PSTN caller then calls in to the phone number assigned in the Amazon Chime Voice Connector.  This triggers the FreeSWITCH server to interact with the PSTN caller through a voice menu.  The caller is joined to their desired meeting by entering their meeting ID. Optionally you can enable voice streaming in the Amazon Chime Voice Connector to stream audio from your meeting to Amazon Kinesis Video streams. Once the audio is streamed to Kinesis you can use other AWS services like Amazon Transcribe, Amazon Comprehend, and Amazon Sagemaker on the audio stream for added analytics as well as storing the audio in Amazon S3.
+The following diagram outlines the solution flow beginning with an Amazon Chime SDK meeting being started. A PSTN caller calls in to the phone number assigned in the Amazon Chime Voice Connector.  This triggers the FreeSWITCH server to interact with the PSTN caller through a voice menu.  The caller is joined to their desired meeting by entering their meeting ID. You can also [enable voice streaming in the Amazon Chime Voice Connector](https://docs.aws.amazon.com/chime/latest/ag/start-kinesis-vc.html) to stream audio from your meeting to Amazon Kinesis. Once the audio is streamed to Amazon Kinesis, you can use other AWS services for added analytics. For example, you can use services like Amazon Transcribe, Amazon Comprehend, and Amazon SageMaker with the audio stream. You can also store the audio in Amazon Simple Storage Service (Amazon S3).
 
 ![](images/chimesdk-pstn.svg)
 
