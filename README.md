@@ -202,7 +202,7 @@ The `gentls_cert` utility is located in the **/usr/src/freeswitch/scripts** dire
 ```
 
 ### Configure FreeSWITCH with an IVR application that plays a menu and connects the caller to the Amazon Chime SDK meeting
-1.	Create a new xml file named **chime.xml** for the dialplan in the **/usr/local/FreeSWITCH/conf/dialplan/public** directory. The file content is listed below. Use your voice connector id in the application bridge section. The +17035550122 phone number is a static number that is used for the [Amazon Chime Voice Connector and Amazon Chime SDK integration](https://docs.aws.amazon.com/chime/latest/dg/mtgs-sdk-cvc.html)
+1.	Create a new xml file named **chime.xml** for the dialplan in the **/usr/local/FreeSWITCH/conf/dialplan/public** directory. The file content is listed below. Use your outbound voice connector id in the application bridge section. The +17035550122 phone number is a static number that is used for the [Amazon Chime Voice Connector and Amazon Chime SDK integration](https://docs.aws.amazon.com/chime/latest/dg/mtgs-sdk-cvc.html)
 
 ```
 <include>
@@ -216,7 +216,13 @@ The `gentls_cert` utility is located in the **/usr/src/freeswitch/scripts** dire
 	</extension>
 </include>
 ```
-2.	Add script to play a menu for PSTN callers to join the meeting. Copy the [JoinMeeting script with audio files](https://github.com/aws-samples/amazon-chime-sdk-pstn-integration/tree/master/resources). Add the **JoinMeeting.js** file to the **/usr/local/FreeSWITCH/scripts** directory. Add the 2 wav files (**please_enter_id.wav** and **now_join.wav**) to the **/usr/local/FreeSWITCH/sounds** directory
+2.	Add script to play a menu for PSTN callers to join the meeting. Copy the [JoinMeeting script with audio files](https://github.com/aws-samples/amazon-chime-sdk-pstn-integration/tree/master/resources). Edit the **JoinMeeting.js** file to use your Amazon Chime SDK meeting API endpoint URL for the `api_host` variable: 
+
+```
+let api_host = 'chime meetings api host fqdn'
+```
+
+Add the **JoinMeeting.js** file to the **/usr/local/FreeSWITCH/scripts** directory. Add the 2 wav files (**please_enter_id.wav** and **now_join.wav**) to the **/usr/local/FreeSWITCH/sounds** directory
 
 ### Join your Amazon Chime SDK meeting from a PSTN phone
 1.	Start an Amazon Chime SDK meeting with an 8 digit numeric meeting ID (e.g. 12345678). You can modify the **JoinMeeting.js** file to change your meeting ID format if you have different meeting ID criteria.
