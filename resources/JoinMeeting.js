@@ -18,7 +18,7 @@ function post_callback(string, arg) {
     console_log(string)
     let join_token = JSON.parse(string)
     console_log(join_token)
-    token = join_token.JoinInfo.Attendee.JoinToken
+    token = join_token.JoinInfo.Attendee.Attendee.JoinToken
 
     console_log("info", token);
     return(true);
